@@ -1,0 +1,16 @@
+[
+{
+  "modid": "fusionutil",
+  "name": "FusionUtil",
+  "description": "A Library for FusionLord's Mods",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authors": ["FusionLord"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
