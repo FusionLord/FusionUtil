@@ -23,25 +23,25 @@ public class SimpleDrawingElement implements IGuiElement
 	}
 
 	@Override
-	public int getHeight()
+	public int getElementHeight()
 	{
 		return drawer.getHeight();
 	}
 
 	@Override
-	public int getWidth()
+	public int getElementWidth()
 	{
 		return drawer.getWidth();
 	}
 
 	@Override
-	public int getY()
+	public int getElementY()
 	{
 		return y;
 	}
 
 	@Override
-	public int getX()
+	public int getElementX()
 	{
 		return x;
 	}

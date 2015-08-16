@@ -27,25 +27,25 @@ public class ButtonGuiElement extends GuiButton implements IGuiElement, IMinecra
 	{}
 
 	@Override
-	public int getHeight()
+	public int getElementHeight()
 	{
 		return height;
 	}
 
 	@Override
-	public int getWidth()
+	public int getElementWidth()
 	{
 		return width;
 	}
 
 	@Override
-	public int getX()
+	public int getElementX()
 	{
 		return xPosition;
 	}
 
 	@Override
-	public int getY()
+	public int getElementY()
 	{
 		return yPosition;
 	}

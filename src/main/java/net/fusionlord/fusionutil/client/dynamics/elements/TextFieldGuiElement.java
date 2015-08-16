@@ -27,19 +27,25 @@ public class TextFieldGuiElement extends GuiTextField implements IGuiElement, IM
 	public void drawForeground() {}
 
 	@Override
-	public int getHeight()
+	public int getElementWidth()
+	{
+		return width;
+	}
+
+	@Override
+	public int getElementHeight()
 	{
 		return height;
 	}
 
 	@Override
-	public int getX()
+	public int getElementX()
 	{
 		return staticX;
 	}
 
 	@Override
-	public int getY()
+	public int getElementY()
 	{
 		return staticY;
 	}

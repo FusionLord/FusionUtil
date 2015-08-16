@@ -61,25 +61,25 @@ public class ProgressElement implements IWidget
 	{}
 
 	@Override
-	public int getHeight()
+	public int getElementHeight()
 	{
 		return height;
 	}
 
 	@Override
-	public int getWidth()
+	public int getElementWidth()
 	{
 		return width;
 	}
 
 	@Override
-	public int getY()
+	public int getElementY()
 	{
 		return y;
 	}
 
 	@Override
-	public int getX()
+	public int getElementX()
 	{
 		return x;
 	}

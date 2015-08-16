@@ -66,25 +66,25 @@ public class DisplayElement implements IWidget
 	}
 
 	@Override
-	public int getHeight()
+	public int getElementHeight()
 	{
 		return width;
 	}
 
 	@Override
-	public int getWidth()
+	public int getElementWidth()
 	{
 		return height;
 	}
 
 	@Override
-	public int getY()
+	public int getElementY()
 	{
 		return y;
 	}
 
 	@Override
-	public int getX()
+	public int getElementX()
 	{
 		return x;
 	}

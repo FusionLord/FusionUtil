@@ -6,11 +6,11 @@ public interface IGuiElement
 
 	void drawForeground();
 
-	int getHeight();
+	int getElementHeight();
 
-	int getWidth();
+	int getElementWidth();
 
-	int getX();
+	int getElementX();
 
-	int getY();
+	int getElementY();
 }

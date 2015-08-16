@@ -61,13 +61,13 @@ public abstract class DynGUIContainer<T extends Container> extends GuiContainer
 		//dynamically resize the background to fit all elements
 		for (IGuiElement element : elements)
 		{
-			if (element.getX() + element.getWidth() + 7 > newWidth)
+			if (element.getElementX() + element.getElementWidth() + 7 > newWidth)
 			{
-				newWidth = element.getX() + element.getWidth() + 7;
+				newWidth = element.getElementX() + element.getElementWidth() + 7;
 			}
-			if (element.getY() + element.getHeight() + 7 > newHeight)
+			if (element.getElementY() + element.getElementHeight() + 7 > newHeight)
 			{
-				newHeight = element.getY() + element.getHeight() + 7;
+				newHeight = element.getElementY() + element.getElementHeight() + 7;
 			}
 		}
 		this.xSize = (guiWidth = newWidth);

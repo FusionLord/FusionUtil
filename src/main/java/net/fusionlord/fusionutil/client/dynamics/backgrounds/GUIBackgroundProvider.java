@@ -28,25 +28,25 @@ public abstract class GUIBackgroundProvider implements IGuiElement
 	protected abstract void addComponents();
 
 	@Override
-	public final int getHeight()
+	public final int getElementHeight()
 	{
 		return height;
 	}
 
 	@Override
-	public final int getWidth()
+	public final int getElementWidth()
 	{
 		return width;
 	}
 
 	@Override
-	public final int getY()
+	public final int getElementY()
 	{
 		return 0;
 	}
 
 	@Override
-	public final int getX()
+	public final int getElementX()
 	{
 		return 0;
 	}
