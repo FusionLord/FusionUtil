@@ -3,6 +3,7 @@ package net.fusionlord.fusionutil.client.dynamics.elements;
 import net.fusionlord.fusionutil.client.dynamics.helper.ColoredQuadDrawer;
 import net.fusionlord.fusionutil.client.dynamics.helper.IQuadDrawer;
 import net.fusionlord.fusionutil.client.dynamics.widgets.IWidget;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import org.lwjgl.opengl.GL11;
@@ -40,7 +41,7 @@ public class DisplayElement implements IWidget
 	}
 
 	@Override
-	public void drawBackground()
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY)
 	{
 		boxWhite.draw(x, y);
 		boxBlack.draw(x + 1, y + 1);
@@ -48,7 +49,7 @@ public class DisplayElement implements IWidget
 	}
 
 	@Override
-	public void drawForeground()
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY)
 	{
 		GL11.glTranslatef(x, y, 0f);
 		GL11.glScalef(.5f, .5f, 0f);

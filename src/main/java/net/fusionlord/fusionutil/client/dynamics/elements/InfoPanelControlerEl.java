@@ -1,6 +1,7 @@
 package net.fusionlord.fusionutil.client.dynamics.elements;
 
 import net.fusionlord.fusionutil.client.dynamics.widgets.IWidget;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import org.lwjgl.opengl.GL11;
 
@@ -81,15 +82,15 @@ public class InfoPanelControlerEl implements IWidget
 	}
 
 	@Override
-	public void drawBackground()
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY)
 	{
 		GL11.glTranslatef(x + getMovedX(), y + getMovedY(), 0);
-		child.drawBackground();
-		child.drawForeground();
+		child.drawBackground(mc, mouseX, mouseY);
+		child.drawForeground(mc, mouseX, mouseY);
 	}
 
 	@Override
-	public void drawForeground()
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY)
 	{
 	}
 

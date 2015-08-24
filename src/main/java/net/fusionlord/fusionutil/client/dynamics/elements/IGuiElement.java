@@ -1,10 +1,12 @@
 package net.fusionlord.fusionutil.client.dynamics.elements;
 
+import net.minecraft.client.Minecraft;
+
 public interface IGuiElement
 {
-	void drawBackground();
+	void drawBackground(Minecraft mc, int mouseX, int mouseY);
 
-	void drawForeground();
+	void drawForeground(Minecraft mc, int mouseX, int mouseY);
 
 	int getElementHeight();
 

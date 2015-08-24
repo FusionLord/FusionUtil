@@ -1,41 +1,43 @@
 package net.fusionlord.fusionutil.client.dynamics.elements;
 
+import net.fusionlord.fusionutil.client.dynamics.helper.NullQuadDrawer;
+import net.fusionlord.fusionutil.client.dynamics.widgets.IWidget;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.gui.GuiTextField;
 
 /**
  * Created by FusionLord on 8/15/2015.
  */
-public class TextFieldGuiElement extends GuiTextField implements IGuiElement, IMinecraftElement
+public class TextFieldGuiElement extends SimpleDrawingElement implements IWidget
 {
 	int staticX, staticY;
+	GuiTextField textField;
 
 	public TextFieldGuiElement(int id, FontRenderer fontRendererObj, int x, int y, int width, int height)
 	{
-		super(id, fontRendererObj, x, y, width, height);
+		super(new NullQuadDrawer());
+		textField = new GuiTextField(id, fontRendererObj, x, y, width, height);
 		staticX = x;
 		staticY = y;
 	}
 
 	@Override
-	public void drawBackground()
-	{
-		drawTextBox();
-	}
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY) {textField.drawTextBox();}
 
 	@Override
-	public void drawForeground() {}
-
-	@Override
-	public int getElementWidth()
-	{
-		return width;
-	}
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY) {}
 
 	@Override
 	public int getElementHeight()
 	{
-		return height;
+		return textField.height;
+	}
+
+	@Override
+	public int getElementWidth()
+	{
+		return textField.width;
 	}
 
 	@Override
@@ -51,9 +53,33 @@ public class TextFieldGuiElement extends GuiTextField implements IGuiElement, IM
 	}
 
 	@Override
-	public void setLocation(int guiLeft, int guiTop)
+	public void update()
 	{
-		xPosition = staticX + guiLeft;
-		yPosition = staticY + guiTop;
+		textField.updateCursorCounter();
+	}
+
+	@Override
+	public SimpleDrawingElement setXY(int x, int y)
+	{
+		textField.xPosition = x;
+		textField.yPosition = y;
+		return this;
+	}
+
+	public GuiTextField getTextField()
+	{
+		return textField;
+	}
+
+	public void mouseClicked(int mouseX, int mouseY, int mouseButton)
+	{
+		if (mouseX > textField.xPosition && mouseX < textField.xPosition + getElementWidth() && mouseY > textField.yPosition && mouseY < textField.yPosition + getElementY())
+		{
+			if (mouseButton == 1)
+			{
+				textField.setText("");
+			}
+			textField.mouseClicked(mouseX, mouseY, mouseButton);
+		}
 	}
 }

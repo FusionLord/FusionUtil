@@ -1,59 +1,74 @@
 package net.fusionlord.fusionutil.client.dynamics.elements;
 
+import net.fusionlord.fusionutil.client.dynamics.helper.NullQuadDrawer;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiButton;
 
 /**
  * Created by FusionLord on 8/15/2015.
  */
-public class ButtonGuiElement extends GuiButton implements IGuiElement, IMinecraftElement
+public class ButtonGuiElement extends SimpleDrawingElement
 {
-	int staticX, staticY;
+	private GuiButton button;
 
+	/**
+	 * @param buttonId   The id of the button;
+	 * @param x          The x position of the button;
+	 * @param y          The y position of the button;
+	 * @param widthIn    The width of the button;
+	 * @param heightIn   The height of the button;
+	 * @param buttonText The text to display on the button;
+	 * @param enabled    Is the button enabled by default;
+	 * @param visible    Is the button visible or hidden;
+	 */
 	public ButtonGuiElement(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText, boolean enabled, boolean visible)
 	{
-		super(buttonId, x, y, widthIn, heightIn, buttonText);
-		staticX = x;
-		staticY = y;
-		this.enabled = enabled;
-		this.visible = visible;
+		super(new NullQuadDrawer());
+		button = new GuiButton(buttonId, x, y, widthIn, heightIn, buttonText);
+		button.enabled = enabled;
+		button.visible = visible;
 	}
 
 	@Override
-	public void drawBackground()
-	{}
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY) {}
 
 	@Override
-	public void drawForeground()
-	{}
-
-	@Override
-	public int getElementHeight()
-	{
-		return height;
-	}
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY) {}
 
 	@Override
 	public int getElementWidth()
 	{
-		return width;
+		return button.width;
+	}
+
+	@Override
+	public int getElementHeight()
+	{
+		return button.height;
 	}
 
 	@Override
 	public int getElementX()
 	{
-		return xPosition;
+		return button.xPosition;
 	}
 
 	@Override
 	public int getElementY()
 	{
-		return yPosition;
+		return button.yPosition;
 	}
 
 	@Override
-	public void setLocation(int guiLeft, int guiTop)
+	public SimpleDrawingElement setXY(int x, int y)
 	{
-		xPosition = staticX + guiLeft;
-		yPosition = staticY + guiTop;
+		button.xPosition = x;
+		button.yPosition = y;
+		return this;
+	}
+
+	public GuiButton getButton()
+	{
+		return button;
 	}
 }

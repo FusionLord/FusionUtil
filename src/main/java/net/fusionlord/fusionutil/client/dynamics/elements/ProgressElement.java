@@ -33,7 +33,7 @@ public class ProgressElement implements IWidget
 	}
 
 	@Override
-	public void drawBackground()
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY)
 	{
 //        drawStrechedTexture(x, y, u, v, width, height);
 //        drawStrechedTexture(x + 1, y + 1, u, v + 1, width - 2, height - 2);
@@ -57,7 +57,7 @@ public class ProgressElement implements IWidget
 	}
 
 	@Override
-	public void drawForeground()
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY)
 	{}
 
 	@Override

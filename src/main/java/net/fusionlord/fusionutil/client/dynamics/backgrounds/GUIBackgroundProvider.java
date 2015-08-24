@@ -2,6 +2,7 @@ package net.fusionlord.fusionutil.client.dynamics.backgrounds;
 
 import net.fusionlord.fusionutil.client.dynamics.elements.IGuiElement;
 import net.fusionlord.fusionutil.client.dynamics.skins.BackgroundSkin;
+import net.minecraft.client.Minecraft;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,20 +53,20 @@ public abstract class GUIBackgroundProvider implements IGuiElement
 	}
 
 	@Override
-	public void drawBackground()
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY)
 	{
 		for (IGuiElement el : components)
 		{
-			el.drawBackground();
+			el.drawBackground(mc, mouseX, mouseY);
 		}
 	}
 
 	@Override
-	public void drawForeground()
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY)
 	{
 		for (IGuiElement el : components)
 		{
-			el.drawForeground();
+			el.drawForeground(mc, mouseX, mouseY);
 		}
 	}
 	

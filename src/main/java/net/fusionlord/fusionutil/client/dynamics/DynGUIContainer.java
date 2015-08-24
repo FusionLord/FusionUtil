@@ -2,16 +2,15 @@ package net.fusionlord.fusionutil.client.dynamics;
 
 import net.fusionlord.fusionutil.client.dynamics.backgrounds.GUIBackgroundProvider;
 import net.fusionlord.fusionutil.client.dynamics.backgrounds.SimpleRectangleBackground;
-import net.fusionlord.fusionutil.client.dynamics.elements.ButtonGuiElement;
 import net.fusionlord.fusionutil.client.dynamics.elements.IGuiElement;
-import net.fusionlord.fusionutil.client.dynamics.elements.IMinecraftElement;
+import net.fusionlord.fusionutil.client.dynamics.elements.SimpleDrawingElement;
 import net.fusionlord.fusionutil.client.dynamics.elements.SlotElement;
 import net.fusionlord.fusionutil.client.dynamics.skins.BackgroundSkin;
 import net.fusionlord.fusionutil.client.dynamics.widgets.IWidget;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
-import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +75,7 @@ public abstract class DynGUIContainer<T extends Container> extends GuiContainer
 		guiLeft = width / 2 - xSize / 2;
 		guiTop = height / 2 - ySize / 2;
 
-		elements.stream().filter(element -> element instanceof ButtonGuiElement).forEach(element -> ((IMinecraftElement) element).setLocation(guiLeft, guiTop));
+		elements.stream().filter(element -> element instanceof SimpleDrawingElement).forEach(element -> ((SimpleDrawingElement) element).setXY(guiLeft + element.getElementX(), guiTop + element.getElementY()));
 
 		background = getBackgroundProvider();
 	}
@@ -92,19 +91,20 @@ public abstract class DynGUIContainer<T extends Container> extends GuiContainer
 	protected void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{
 
-		elements.forEach(IGuiElement::drawForeground);
+		elements.forEach(o -> o.drawForeground(mc, mouseX, mouseY));
 	}
 
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float var1, int mouseX, int mouseY)
 	{
-		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glPushMatrix();
-		GL11.glTranslatef(guiLeft, guiTop, 0);
-		background.drawBackground();
-		background.drawForeground();
-		elements.forEach(IGuiElement::drawBackground);
-		GL11.glPopMatrix();
+//		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GlStateManager.pushMatrix();
+		GlStateManager.translate(guiLeft, guiTop, 0);
+		background.drawBackground(mc, mouseX, mouseY);
+		background.drawForeground(mc, mouseX, mouseY);
+		GlStateManager.translate(-guiLeft, -guiTop, 0);
+		GlStateManager.popMatrix();
+		elements.forEach(o -> o.drawBackground(mc, mouseX, mouseY));
 	}
 
 	@Override

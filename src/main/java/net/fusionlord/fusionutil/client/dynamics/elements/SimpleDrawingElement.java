@@ -1,6 +1,7 @@
 package net.fusionlord.fusionutil.client.dynamics.elements;
 
 import net.fusionlord.fusionutil.client.dynamics.helper.IQuadDrawer;
+import net.minecraft.client.Minecraft;
 
 public class SimpleDrawingElement implements IGuiElement
 {
@@ -54,7 +55,7 @@ public class SimpleDrawingElement implements IGuiElement
 	}
 
 	@Override
-	public void drawBackground()
+	public void drawBackground(Minecraft mc, int mouseX, int mouseY)
 	{
 		if (!drawInForeground)
 		{
@@ -63,7 +64,7 @@ public class SimpleDrawingElement implements IGuiElement
 	}
 
 	@Override
-	public void drawForeground()
+	public void drawForeground(Minecraft mc, int mouseX, int mouseY)
 	{
 		if (drawInForeground)
 		{
